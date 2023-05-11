@@ -1,0 +1,12 @@
+{
+  "products": [
+    {
+      "name": "ramstain",
+      "description": "lalka",
+      "price": 69,
+      "picture": "https://i.ytimg.com/vi/EOnSh3QlpbQ/maxresdefault.jpg",
+      "type": "lalka",
+      "id": 1
+    }
+  ]
+}
