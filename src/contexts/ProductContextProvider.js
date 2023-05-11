@@ -59,7 +59,7 @@ function ProductContextProvider({children}){
 
 
     const values ={addProduct,     products: state.products,
-        getProducts
+        getProducts, deleteProduct,
     }
 
     return <productContext.Provider value={values}>{children}</productContext.Provider>
