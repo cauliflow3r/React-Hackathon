@@ -6,6 +6,7 @@ const Navbar = () => {
   return (
     <div>
       <Container sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Link to={"/draw"}>DrawingPage</Link>
         <Link to={"/"}>home</Link>
         <Link to={"/add"}>add</Link>
       </Container>
