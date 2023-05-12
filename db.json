@@ -23,6 +23,19 @@
       "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQccAxCllgvrI5E1NAR4FdAcKQs1YV0efmtuFuJ--t87UlFiSW4qb55ZyZ3Zbu7z5M5S-s&usqp=CAU",
       "type": "kdvm",
       "id": 4
+    },
+    {
+      "name": "dsa",
+      "description": "PPP",
+      "price": null,
+      "picture": "dwad",
+      "type": "dwadwa",
+      "id": 5
+    }
+  ],
+  "drawings": [
+    {
+      "id": 1
     }
   ]
 }
