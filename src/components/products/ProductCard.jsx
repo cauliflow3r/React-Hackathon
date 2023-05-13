@@ -9,11 +9,11 @@ import { useProducts } from "../../contexts/ProductContextProvider";
 import { useNavigate } from "react-router-dom";
 import { IconButton } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-// import { useCart } from "../../contexts/CartContextProvider";
+import { useCart } from "../../contexts/CartContextProvider";
 
 export default function ProductCard({ item }) {
   const { deleteProduct } = useProducts();
-  // const { addProductToCart, checkProductInCart } = useCart();
+  const { addProductToCart, checkProductInCart } = useCart();
   const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -40,11 +40,11 @@ export default function ProductCard({ item }) {
         <Button size="small" onClick={() => deleteProduct(item.id)}>
           Delete
         </Button>
-        {/* <IconButton onClick={() => addProductToCart(item)}>
+        <IconButton onClick={() => addProductToCart(item)}>
           <AddShoppingCartIcon
             color={checkProductInCart(item.id) ? "primary" : ""}
           />
-        </IconButton> */}
+        </IconButton>
         <Button size="small">Details</Button>
       </CardActions>
     </Card>
