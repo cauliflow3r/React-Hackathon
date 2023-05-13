@@ -4,6 +4,7 @@ import ProductList from "../components/products/ProductsList";
 import { Route, Routes } from "react-router-dom";
 import CartPage from "../pages/CartPage";
 import NotFoundPage from "../pages/NotFoundPage";
+import FavoritesPage from "../pages/FavoritesPage";
 
 const MainRoute = () => {
   return (
@@ -14,6 +15,7 @@ const MainRoute = () => {
         <Route path="/add" element={<AdminPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
       </Routes>
     </div>
   );
