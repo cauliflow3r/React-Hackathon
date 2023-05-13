@@ -9,7 +9,6 @@
       "id": 2
     },
     {
-
       "name": "Luntic",
       "description": "мультик",
       "price": 4567,
@@ -40,7 +39,8 @@
       "picture": "https://s2.vcdn.biz/static/f/1689200381/image.jpg",
       "type": "мультик",
       "id": 8
-
+    },
+    {
       "name": "Emir Mentor",
       "description": "sportsman",
       "price": 69,
@@ -55,12 +55,19 @@
       "picture": "dwad",
       "type": "dwadwa",
       "id": 5
+    },
+    {
+      "name": "dwada",
+      "description": "dwadwa",
+      "price": null,
+      "picture": "dwadwa",
+      "type": "dwadwa",
+      "id": 9
     }
   ],
   "drawings": [
     {
       "id": 1
-
     }
   ]
 }
