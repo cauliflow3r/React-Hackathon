@@ -1,14 +1,6 @@
 {
   "products": [
     {
-      "name": "ramstain",
-      "description": "lalka",
-      "price": 69,
-      "picture": "https://i.ytimg.com/vi/EOnSh3QlpbQ/maxresdefault.jpg",
-      "type": "lalka",
-      "id": 1
-    },
-    {
       "name": "Popastik",
       "description": "sportsman",
       "price": 69,
@@ -17,6 +9,38 @@
       "id": 2
     },
     {
+
+      "name": "Luntic",
+      "description": "мультик",
+      "price": 4567,
+      "picture": "https://cdnn21.img.ria.ru/images/94595/90/945959014_0:0:1024:768_1920x0_80_0_0_a15a30840a75b729d7e72eb50ebcea39.jpg",
+      "type": "мультик",
+      "id": 5
+    },
+    {
+      "name": "маленький зоомагазин",
+      "description": "мультик",
+      "price": 478,
+      "picture": "https://mult.tv/images/malenkiy-zoomagazin0.jpg",
+      "type": "мультик",
+      "id": 6
+    },
+    {
+      "name": "Барбоскины",
+      "description": "мультик",
+      "price": 56789,
+      "picture": "https://www.karusel-tv.ru/media/suit/in1200x720/media/broadcast_cover/2020/03/1584026521953350_28_na_okne_cc1.jpg",
+      "type": "мультик",
+      "id": 7
+    },
+    {
+      "name": "Барби",
+      "description": "сказочная страна моды",
+      "price": 999,
+      "picture": "https://s2.vcdn.biz/static/f/1689200381/image.jpg",
+      "type": "мультик",
+      "id": 8
+
       "name": "Emir Mentor",
       "description": "sportsman",
       "price": 69,
@@ -36,6 +60,7 @@
   "drawings": [
     {
       "id": 1
+
     }
   ]
 }
