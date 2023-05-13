@@ -12,6 +12,7 @@ const DrawingPage = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleClear = () => {
     const canvas = canvasRef.current;
@@ -22,26 +23,31 @@ const DrawingPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const canvas = canvasRef.current;
-    const dataURL = canvas.toDataURL(); // Convert canvas to data URL
-
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("description", description);
-    formData.append("price", price);
-    formData.append("drawing", dataURL);
+    setIsSubmitting(true);
 
     try {
-      await axios.post("http://localhost:8000/drawings", formData);
-      alert("Drawing submitted successfully!");
-      // Reset form fields
+      const canvas = canvasRef.current;
+      const dataURL = canvas.toDataURL();
+
+      const drawingData = {
+        name,
+        description,
+        price,
+        drawing: dataURL,
+      };
+      await axios.post("http://localhost:8000/drawings", drawingData);
+
+      console.log("Drawing submitted successfully");
+
       setName("");
       setDescription("");
       setPrice("");
-      setIsFormOpen(false); // Close the form after successful submission
+      handleClear();
+      setIsSubmitting(false);
+      setIsFormOpen(false);
     } catch (error) {
       console.error("Error submitting drawing:", error);
+      setIsSubmitting(false);
     }
   };
 
@@ -49,12 +55,16 @@ const DrawingPage = () => {
     const canvas = canvasRef.current;
     const toolbar = toolbarRef.current;
     const ctx = canvas.getContext("2d");
+    const margin = 20;
 
     const canvasOffsetX = canvas.offsetLeft;
     const canvasOffsetY = canvas.offsetTop;
+    const canvasWidth = window.innerWidth - canvasOffsetX - margin;
+    const canvasHeight = window.innerHeight - canvasOffsetY - margin;
 
-    canvas.width = window.innerWidth - canvasOffsetX;
-    canvas.height = window.innerHeight - canvasOffsetY;
+    // Set the canvas dimensions
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
   }, []);
 
   return (
@@ -91,11 +101,8 @@ const DrawingPage = () => {
             lineWidth={lineWidth}
           />
         </div>
-        <div
-          className={`form ${isFormOpen ? "open" : ""}`}
-          onSubmit={handleSubmit}
-        >
-          <form className="form" onSubmit={handleSubmit}>
+        <div className={`form ${isFormOpen ? "open" : "closed"}`}>
+          <form className="form">
             <h2>Submit Drawing</h2>
             <div className="form-group">
               <label htmlFor="name">Name</label>
@@ -126,11 +133,14 @@ const DrawingPage = () => {
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={handleSubmit}>
+              Submit
+            </button>
           </form>
         </div>
       </div>
     </section>
   );
 };
+
 export default DrawingPage;
