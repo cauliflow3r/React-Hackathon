@@ -31,6 +31,8 @@ const INIT_STATE = {
 
 function ProductContextProvider({children}){
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const navigate = useNavigate();
+
   //! const navigate = useNavigate();
 
   // функция для получения данных с сервера 
@@ -55,11 +57,32 @@ function ProductContextProvider({children}){
     getProducts();
   };
 
+  // получение деталей одного продукта 
+  const getProductDetails = async (id) => {
+    //  запрос на получение одного продукта
+    const { data } = await axios(`${JSON_API_PRODUCTS}/${id}`);
+    // обновдение
+    dispatch({
+      type: ACTIONS.GET_PRODUCT_DETAILS,
+      payload: data,
+    });
+  };
+
+  // сохранение отредактированного продукта
+  const saveEditedProduct = async (newProduct) => {
+    // отправка patch запроса
+    await axios.patch(`${JSON_API_PRODUCTS}/${newProduct.id}`, newProduct);
+    // стягивание обновленных данных
+    getProducts();
+    navigate("/products");
+  };
+
 
 
 
     const values ={addProduct,     products: state.products,
-        getProducts, deleteProduct,
+    productDetails: state.productDetails,
+    getProducts, deleteProduct, saveEditedProduct, getProductDetails, 
     }
 
     return <productContext.Provider value={values}>{children}</productContext.Provider>
