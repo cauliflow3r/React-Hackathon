@@ -9,6 +9,7 @@
       "id": 2
     },
     {
+
       "name": "Luntic",
       "description": "мультик",
       "price": 4567,
@@ -39,6 +40,27 @@
       "picture": "https://s2.vcdn.biz/static/f/1689200381/image.jpg",
       "type": "мультик",
       "id": 8
+
+      "name": "Emir Mentor",
+      "description": "sportsman",
+      "price": 69,
+      "picture": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQccAxCllgvrI5E1NAR4FdAcKQs1YV0efmtuFuJ--t87UlFiSW4qb55ZyZ3Zbu7z5M5S-s&usqp=CAU",
+      "type": "kdvm",
+      "id": 4
+    },
+    {
+      "name": "dsa",
+      "description": "PPP",
+      "price": null,
+      "picture": "dwad",
+      "type": "dwadwa",
+      "id": 5
+    }
+  ],
+  "drawings": [
+    {
+      "id": 1
+
     }
   ]
 }

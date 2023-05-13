@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContextProvider";
 import { getCountProductsInCart } from "../../helpers/function";
 
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -152,6 +153,17 @@ export default function PrimarySearchAppBar() {
         <p>Profile</p>
       </MenuItem>
     </Menu>
+
+const Navbar = () => {
+  return (
+    <div>
+      <Container sx={{ display: "flex", justifyContent: "space-around" }}>
+        <Link to={"/draw"}>DrawingPage</Link>
+        <Link to={"/"}>home</Link>
+        <Link to={"/add"}>add</Link>
+      </Container>
+    </div>
+
   );
 
   return (
