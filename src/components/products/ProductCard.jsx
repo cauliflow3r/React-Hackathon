@@ -16,10 +16,10 @@ export default function ProductCard({ item }) {
   const { addProductToCart, checkProductInCart } = useCart();
   const navigate = useNavigate();
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 500 }}>
       <CardMedia
         sx={{ height: 140 }}
-        image={item.picture}
+        image={item.drawing}
         title="green iguana"
       />
       <CardContent>
@@ -45,7 +45,9 @@ export default function ProductCard({ item }) {
             color={checkProductInCart(item.id) ? "primary" : ""}
           />
         </IconButton>
-        <Button size="small">Details</Button>
+        <Button size="small" onClick={() => navigate(`/details/${item.id}`)}>
+          Details
+        </Button>
       </CardActions>
     </Card>
   );

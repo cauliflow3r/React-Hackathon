@@ -7,14 +7,17 @@ import CartPage from "../pages/CartPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 import DrawingPage from "../pages/DrawingPage";
+import EditProductPage from "../pages/EditProductPage";
+import ProductDetails from "../components/products/ProductDetails";
 
 const MainRoute = () => {
   return (
     <div>
       <Routes>
         <Route path="/draw" element={<DrawingPage />} />
-        <Route path="/" element={<ProductList />} />
-        {/* <Route path="/edit/:id" element={< />} /> */}
+        <Route path="/products" element={<ProductList />} />
+        <Route path="/edit/:id" element={<EditProductPage />} />
+        <Route path="/details/:id" element={<ProductDetails />} />
         <Route path="/add" element={<AdminPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
