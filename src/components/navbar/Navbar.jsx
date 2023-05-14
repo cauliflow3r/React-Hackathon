@@ -18,6 +18,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContextProvider";
 import { getCountProductsInCart } from "../../helpers/function";
+import SearchProducts from "../search/SeachProducts";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -179,17 +180,13 @@ export default function PrimarySearchAppBar() {
           >
             MUI
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          {/* search toot */}
+          <SearchProducts />
+
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Link to="/draw">draw</Link>
+            <Link to="/products">products</Link>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
