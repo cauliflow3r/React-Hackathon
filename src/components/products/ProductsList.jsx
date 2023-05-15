@@ -39,7 +39,13 @@ const ProductList = () => {
 
   return (
     <>
-      <Grid item md={9}>
+      <Grid
+        sx={{
+          marginTop: 15,
+        }}
+        item
+        md={9}
+      >
         <Box
           sx={{
             display: "flex",

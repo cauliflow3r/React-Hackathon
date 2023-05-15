@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../contexts/CartContextProvider";
 import { getCountProductsInCart } from "../../helpers/function";
 import SearchProducts from "../search/SeachProducts";
+import "../Styles/Navbar.css";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -185,8 +186,16 @@ export default function PrimarySearchAppBar() {
 
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Link to="/draw">draw</Link>
-            <Link to="/products">products</Link>
+            <Link to="/draw">
+              <button>
+                <span class="button_top"> Draw</span>
+              </button>
+            </Link>
+            <Link to="/products">
+              <button>
+                <span class="button_top"> Products</span>
+              </button>
+            </Link>
             <IconButton
               size="large"
               aria-label="show 4 new mails"

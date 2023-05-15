@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Canvas = ({ canvasId, strokeColor, lineWidth }, ref) => {
   const [isPainting, setIsPainting] = useState(false);
@@ -13,7 +13,6 @@ const Canvas = ({ canvasId, strokeColor, lineWidth }, ref) => {
     const canvas = ref.current;
     const ctx = canvas.getContext("2d");
 
-    ctx.stroke();
     ctx.beginPath();
   };
 
@@ -32,9 +31,22 @@ const Canvas = ({ canvasId, strokeColor, lineWidth }, ref) => {
     ctx.lineCap = "round";
     ctx.strokeStyle = strokeColor;
 
-    ctx.lineTo(e.clientX - canvasOffsetX, e.clientY - canvasOffsetY);
+    ctx.lineTo(e.pageX - canvasOffsetX, e.pageY - canvasOffsetY);
     ctx.stroke();
   };
+
+  useEffect(() => {
+    const canvas = ref.current;
+    const ctx = canvas.getContext("2d");
+
+    const canvasOffsetX = canvas.offsetLeft;
+    const canvasOffsetY = canvas.offsetTop;
+
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }, []);
 
   return (
     <canvas

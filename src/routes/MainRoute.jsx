@@ -8,8 +8,8 @@ import NotFoundPage from "../pages/NotFoundPage";
 
 import DrawingPage from "../pages/DrawingPage";
 import EditProductPage from "../pages/EditProductPage";
-import ProductDetails from "../components/products/ProductDetails";
 import ProductsDetailsPage from "../pages/ProductsDetailsPage";
+import HomePage from "../pages/HomePage";
 
 const MainRoute = () => {
   return (
@@ -21,6 +21,8 @@ const MainRoute = () => {
         <Route path="/details/:id" element={<ProductsDetailsPage />} />
         <Route path="/add" element={<AdminPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/" element={<HomePage />} />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useProducts } from "../../contexts/ProductContextProvider";
 import {
+  Box,
   Button,
   Card,
   CardActions,
@@ -16,7 +17,11 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <Card sx={{ maxWidth: 500 }}>
+      <Card
+        sx={{
+          maxWidth: 500,
+        }}
+      >
         <CardMedia
           sx={{ height: 140 }}
           image={productDetails.drawing}
