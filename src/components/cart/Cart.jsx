@@ -44,18 +44,6 @@ export default function Cart() {
     },
   }));
 
-  function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-  }
-
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-    createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-    createData("Eclair", 262, 16.0, 24, 6.0),
-    createData("Cupcake", 305, 3.7, 67, 4.3),
-    createData("Gingerbread", 356, 16.0, 49, 3.9),
-  ];
-
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -79,7 +67,7 @@ export default function Cart() {
             >
               <TableCell component="th" scope="row">
                 {/* item внутри объекта row содержит информацию о конкретном продукте и поэтому мы используем его */}
-                <img src={row.item.picture} width="70" height="70" alt="kj" />
+                <img src={row.item.drawing} width={150} alt="kj" />
               </TableCell>
               <TableCell align="right">{row.item.name}</TableCell>
               <TableCell align="right">{row.item.type}</TableCell>
