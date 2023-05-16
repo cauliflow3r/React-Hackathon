@@ -10,7 +10,7 @@ const DrawingPage = () => {
   const [strokeColor, setStrokeColor] = useState("#000000");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -41,7 +41,7 @@ const DrawingPage = () => {
 
       setName("");
       setDescription("");
-      setPrice("");
+      setPrice(0);
       handleClear();
       setIsSubmitting(false);
       setIsFormOpen(false);
@@ -131,7 +131,7 @@ const DrawingPage = () => {
                 name="price"
                 type="number"
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setPrice(Number(e.target.value))}
               />
             </div>
             <button type="submit" onClick={handleSubmit}>

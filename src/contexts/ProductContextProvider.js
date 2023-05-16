@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import { ACTIONS, JSON_API_PRODUCTS } from "../helpers/consts";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 export const productContext = createContext();
@@ -79,10 +79,43 @@ function ProductContextProvider({children}){
 
 
 
+  
+  //filter
+  //   хук для получения pathname
+  const location = useLocation();
+
+  // функция для фильтрации, принимает 2 арнумента. Первый это по какому полю фильтровать, второй -  значение поля
+  const fetchByParams = async (query, value) => {
+    // создаем новый объект параметра поиска  через конструктор
+    const search = new URLSearchParams(window.location.search);
+
+    // если значение all, то параметр поиска не вшивается в запрос
+    if (value === "all") {
+      search.delete(query);
+      //если  query === price, то значит работает фильтр по цене
+    } else if (query == "price") {
+      // помещаем URL параметры price_gte и price_Lte в запрос
+      search.set("price_gte", +value[0]);
+      search.set("price_lte", +value[1]);
+    } else {
+      // для сортировки по типу
+      search.set(query, value);
+    }
+
+    // формируем новый url, на основе текущего pathname, и на основе выше стоящей проверки
+    const url = `${location.pathname}?${search.toString()}`;
+    console.log("url",url);
+    navigate(url); // переход по сформированном выше url'у
+    getProducts();
+  };
+
+
+
+
 
     const values ={addProduct,     products: state.products,
     productDetails: state.productDetails,
-    getProducts, deleteProduct, saveEditedProduct, getProductDetails, 
+    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams
     }
 
     return <productContext.Provider value={values}>{children}</productContext.Provider>
