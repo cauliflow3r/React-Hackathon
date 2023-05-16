@@ -29,11 +29,30 @@ const SideBar = () => {
           >
             <FormControlLabel value="all" control={<Radio />} label="All" />
             <FormControlLabel
-              value="female"
+              value="genitalia"
               control={<Radio />}
-              label="Female"
+              label="Genitalia"
             />
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
+            <FormControlLabel
+              value="portrait"
+              control={<Radio />}
+              label="Portrait"
+            />
+            <FormControlLabel
+              value="household"
+              control={<Radio />}
+              label="Household"
+            />
+            <FormControlLabel
+              value="landscape"
+              control={<Radio />}
+              label="Landscape"
+            />
+            <FormControlLabel
+              value="stillLife"
+              control={<Radio />}
+              label="StillLife"
+            />
             <FormControlLabel value="other" control={<Radio />} label="Other" />
           </RadioGroup>
         </FormControl>

@@ -9,8 +9,10 @@ const DrawingPage = () => {
   const [lineWidth, setLineWidth] = useState(5);
   const [strokeColor, setStrokeColor] = useState("#000000");
   const [name, setName] = useState("");
+  const [type, setType] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
+  const [comments, setComments] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -31,8 +33,10 @@ const DrawingPage = () => {
 
       const drawingData = {
         name,
+        type,
         description,
         price,
+        comments,
         drawing: dataURL,
       };
       await axios.post("http://localhost:8000/drawings", drawingData);
@@ -40,8 +44,10 @@ const DrawingPage = () => {
       console.log("Drawing submitted successfully");
 
       setName("");
+      setType("");
       setDescription("");
       setPrice(0);
+      setComments([]);
       handleClear();
       setIsSubmitting(false);
       setIsFormOpen(false);
@@ -113,6 +119,32 @@ const DrawingPage = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
+            </div>
+            <div className="form-group">
+              <label htmlFor="type">Type</label>
+              <select
+                size="3"
+                multiple
+                name="type"
+                onChange={(e) => setType(e.target.value)}
+              >
+                <option disabled>Выберите героя</option>
+                <option value="genitalia">Genitalia</option>
+                <option selected value="portrait">
+                  Portrait
+                </option>
+                <option value="household">Household</option>
+                <option value="landscape">Landscape</option>
+                <option value="stillLife">Still life</option>
+                <option value="other">Other</option>
+              </select>
+              {/* <input
+                id="name"
+                name="type"
+                type="text"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+              /> */}
             </div>
             <div className="form-group">
               <label htmlFor="description">Description</label>

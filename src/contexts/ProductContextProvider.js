@@ -13,6 +13,7 @@ export const useProducts = () => {
 const INIT_STATE = {
     products: [],
     productDetails: {},
+    commentsState: {comment: "", user: "user"}
   };
   
   // функция , которая в зависимости от action.type, меняет определенную часть состояния
@@ -23,6 +24,9 @@ const INIT_STATE = {
   
       case ACTIONS.GET_PRODUCT_DETAILS:
         return { ...state, productDetails: action.payload };
+
+      case "ADD_COMMENTS":
+        return { ...state, commentsState: action.payload };
   
       default:
         return state;
@@ -110,12 +114,33 @@ function ProductContextProvider({children}){
   };
 
 
+  // ! comments start
+
+  async function setComments(obj) {
+    state.productDetails.comments.push(obj)
+    const newObj = {...state.productDetails, comments: state.productDetails.comments};
+    console.log(newObj);
+    // console.log(state.productDetails.comments.push(obj));
+    console.log("state.productDetails",state.productDetails);
+    await axios.patch(`${JSON_API_PRODUCTS}/${state.productDetails.id}`, newObj);
+  }
+
+  function setCommentsState(a) {
+    dispatch({
+      type: "ADD_COMMENTS",
+      payload: a,
+    });
+  }
+
+  // ! comments finish
+
+
 
 
 
     const values ={addProduct,     products: state.products,
     productDetails: state.productDetails,
-    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams
+    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState
     }
 
     return <productContext.Provider value={values}>{children}</productContext.Provider>
