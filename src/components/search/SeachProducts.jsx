@@ -69,13 +69,20 @@ const SearchProducts = () => {
         }}
       >
         <input
+          placeholder="Search"
+          name="text"
+          className="input"
           type="text"
           value={search}
           onChange={(e) => {
             setSearch(e.target.value);
           }}
         />
-        <button type="submit">Search</button>
+        <button>
+          <span class="button_top" type="submit">
+            Search
+          </span>
+        </button>
       </form>
 
       {/* <Search>
