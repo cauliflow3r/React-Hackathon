@@ -21,27 +21,27 @@ section:nth-child(1) {
 }
 
 section:nth-child(2) {
-  background: #f64747;
+  background: #575353;
 }
 
 section:nth-child(3) {
-  background: #22a7f0;
+  background: #213039;
 }
 
 section:nth-child(4) {
-  background: #f9690e;
+  background: #575353;
 }
 
 section:nth-child(5) {
-  background: #9b59b6;
+  background: #213039;
 }
 
 section:nth-child(6) {
-  background: #03c9a9;
+  background: #575353;
 }
 
 section:nth-child(7) {
-  background: #ffcc00;
+  background: #213039;
 }
 
 .nav__wrapper {
@@ -142,4 +142,7 @@ section:nth-child(7) {
   height: 100px;
   opacity: 1;
   overflow: visible;
+}
+navbar {
+  position: relative;
 }

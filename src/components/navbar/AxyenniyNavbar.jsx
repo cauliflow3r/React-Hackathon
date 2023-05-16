@@ -4,6 +4,7 @@ import "../Styles/AxyenniyNavbar.css";
 import { Box } from "@mui/material";
 import siteName from "../svg/siteName.png";
 import { Link } from "react-router-dom";
+import newlogo from "../svg/Screenshot 2023-05-16 at 14.13.41.png";
 
 const AxyenniyNavbar = () => {
   return (
@@ -36,7 +37,12 @@ const AxyenniyNavbar = () => {
               alt="logo"
             />
             <Link to="/">
-              <img style={{ maxWidth: "150px" }} src={siteName} alt="" />
+              <img
+                className="newLogo"
+                style={{ maxHeight: "100px" }}
+                src={newlogo}
+                alt=""
+              />
             </Link>
             <div className="search">
               <input
