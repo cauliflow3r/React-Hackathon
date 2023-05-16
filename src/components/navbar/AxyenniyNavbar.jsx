@@ -1,12 +1,16 @@
 import React from "react";
-import icon_black from "../svg/logo_white.svg";
+import icon_black from "../svg/login.png";
 import "../Styles/AxyenniyNavbar.css";
 import { Box, Menu, MenuItem, MenuList } from "@mui/material";
 import siteName from "../svg/siteName.png";
 import { Link, useNavigate } from "react-router-dom";
 import newlogo from "../svg/Screenshot 2023-05-16 at 14.13.41.png";
+
 import { useAuth } from "../../contexts/AuthContextProvider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+import SearchProducts from "../search/SeachProducts";
+
 
 const AxyenniyNavbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -62,12 +66,14 @@ const AxyenniyNavbar = () => {
               alignItems: "center",
             }}
           >
-            <img
-              style={{ maxWidth: "100px" }}
-              className="logo"
-              src={icon_black}
-              alt="logo"
-            />
+            <Link to="/auth">
+              <img
+                style={{ maxWidth: "100px" }}
+                className="logo"
+                src={icon_black}
+                alt="logo"
+              />
+            </Link>
             <Link to="/">
               <img
                 className="newLogo"
@@ -77,15 +83,7 @@ const AxyenniyNavbar = () => {
               />
             </Link>
             <div className="search">
-              <input
-                className="input"
-                type="text"
-                placeholder="Search"
-                name="text"
-              />
-              <button>
-                <span class="button_top">Search</span>
-              </button>
+              <SearchProducts />
             </div>
             <div className="navigation_buttons">
               <Link to="/draw">
