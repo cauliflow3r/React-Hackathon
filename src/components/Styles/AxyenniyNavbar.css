@@ -87,4 +87,5 @@ button:active .button_top {
   transform: translateY(0);
 }
 .newLogo {
+  padding: 10px;
 }
