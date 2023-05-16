@@ -67,7 +67,7 @@ export default function Cart() {
             >
               <TableCell component="th" scope="row">
                 {/* item внутри объекта row содержит информацию о конкретном продукте и поэтому мы используем его */}
-                <img src={row.item.drawing} width={150} alt="kj" />
+                <img src={row.item.drawing} width="70" height="70" alt="kj" />
               </TableCell>
               <TableCell align="right">{row.item.name}</TableCell>
               <TableCell align="right">{row.item.type}</TableCell>

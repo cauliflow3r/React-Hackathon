@@ -10,13 +10,18 @@ import DrawingPage from "../pages/DrawingPage";
 import EditProductPage from "../pages/EditProductPage";
 import ProductsDetailsPage from "../pages/ProductsDetailsPage";
 import HomePage from "../pages/HomePage";
+import ProductsPage from "../pages/ProductsPage";
+import AuthPage from "../pages/AuthPage";
 
 const MainRoute = () => {
   return (
     <div>
       <Routes>
         <Route path="/draw" element={<DrawingPage />} />
-        <Route path="/products" element={<ProductList />} />
+        <Route path="/auth" element={<AuthPage />} />
+
+        <Route path="/products" element={<ProductsPage />} />
+
         <Route path="/edit/:id" element={<EditProductPage />} />
         <Route path="/details/:id" element={<ProductsDetailsPage />} />
         <Route path="/add" element={<AdminPage />} />
