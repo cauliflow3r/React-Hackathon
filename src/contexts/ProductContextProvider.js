@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { ACTIONS, JSON_API_PRODUCTS } from "../helpers/consts";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -36,6 +36,9 @@ const INIT_STATE = {
 function ProductContextProvider({children}){
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const navigate = useNavigate();
+  // max price
+ const [maxPrice, setMaxPrice] = useState(10);
+
 
   //! const navigate = useNavigate();
 
@@ -119,9 +122,6 @@ function ProductContextProvider({children}){
   async function setComments(obj) {
     state.productDetails.comments.push(obj)
     const newObj = {...state.productDetails, comments: state.productDetails.comments};
-    // console.log(newObj);
-    // console.log(state.productDetails.comments.push(obj));
-    // console.log("state.productDetails",state.productDetails);
     await axios.patch(`${JSON_API_PRODUCTS}/${state.productDetails.id}`, newObj);
   }
 
@@ -140,7 +140,7 @@ function ProductContextProvider({children}){
 
     const values ={addProduct,     products: state.products,
     productDetails: state.productDetails,
-    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState
+    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState, setMaxPrice, maxPrice
     }
 
     return <productContext.Provider value={values}>{children}</productContext.Provider>

@@ -1,7 +1,8 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
+import { FormControl, MenuItem, Select } from "@mui/base";
 
 const EditProduct = () => {
   const { saveEditedProduct, getProductDetails, productDetails } =
@@ -86,6 +87,7 @@ const EditProduct = () => {
           onChange={handleInp}
           value={product.type || ""}
         />
+
         <Button
           onClick={() => saveEditedProduct(product)}
           fullWidth
