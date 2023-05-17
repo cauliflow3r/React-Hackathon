@@ -1,12 +1,12 @@
 import React from "react";
-import MainRoute from "./routes/MainRoute";
+import AppRoutes from "./routes/AppRoutes";
 import AxyenniyNavbar from "./components/navbar/AxyenniyNavbar";
 
 const App = () => {
   return (
     <div>
       <AxyenniyNavbar />
-      <MainRoute />
+      <AppRoutes />
     </div>
   );
 };

@@ -17,88 +17,76 @@ const ProductDetails = () => {
     useProducts();
   const [inputCom, setInputCom] = useState("");
   const navigate = useNavigate();
+
   useEffect(() => {
     console.log("productDetails.comments", productDetails.comments);
     console.log("commentsState", commentsState);
   }, []);
+
   return (
-    <div>
-      <Card
-        sx={{
-          maxWidth: 500,
-        }}
-      >
-        <CardMedia
-          sx={{ height: 140 }}
-          image={productDetails.drawing}
-          title="green iguana"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {productDetails.name}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {productDetails.type}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {productDetails.description}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {productDetails.price}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small" onClick={() => navigate(-1)}>
-            go back
-          </Button>
-          {/* <Button size="small" onClick={() => deleteProduct(item.id)}>
-          Delete
-        </Button> */}
-          {/* <IconButton onClick={() => addProductToCart(item)}>
-          <AddShoppingCartIcon
-            color={checkProductInCart(item.id) ? "primary" : ""}
+    <div style={{ display: "flex" }}>
+      <div style={{ flex: 1, marginRight: "16px" }}>
+        <Card sx={{ maxWidth: 500 }}>
+          <CardMedia
+            sx={{ height: 140 }}
+            image={productDetails.drawing}
+            title="green iguana"
           />
-        </IconButton> */}
-        </CardActions>
-      </Card>
-      {/* comments */}
-      <div>
-        <h3>comments</h3>
-
-        {productDetails.comments.length
-          ? productDetails.comments.map((a) => {
-              return (
-                <div>
-                  <p>{a.user}</p>
-                  <p>{a.comment}</p>;
-                </div>
-              );
-            })
-          : null}
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {productDetails.name}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {productDetails.type}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {productDetails.description}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {productDetails.price}
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size="small" onClick={() => navigate(-1)}>
+              go back
+            </Button>
+          </CardActions>
+        </Card>
       </div>
-      <div>
-        <form
-          action=""
-          onSubmit={(e) => {
-            e.preventDefault();
-            const newObj = { ...commentsState, comment: inputCom };
-            console.log("newObj", newObj);
 
-            setComments(newObj);
-          }}
-        >
-          <input
-            type="text"
-            value={inputCom}
-            onChange={(e) => {
-              setInputCom(e.target.value);
-              console.log(inputCom);
+      <div style={{ flex: 1 }}>
+        <div>
+          <h3>comments</h3>
+          {productDetails.comments.length ? (
+            productDetails.comments.map((a, index) => (
+              <div key={index}>
+                <p>{a.user}</p>
+                <p>{a.comment}</p>
+              </div>
+            ))
+          ) : (
+            <p>No comments yet.</p>
+          )}
+        </div>
+
+        <div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const newObj = { ...commentsState, comment: inputCom };
+              console.log("newObj", newObj);
+              setComments(newObj);
             }}
-          />
-          <button type="submit">comment</button>
-        </form>
+          >
+            <input
+              type="text"
+              value={inputCom}
+              onChange={(e) => setInputCom(e.target.value)}
+            />
+            <button type="submit">comment</button>
+          </form>
+        </div>
       </div>
-      {/* finish comments */}
     </div>
   );
 };

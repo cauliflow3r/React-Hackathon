@@ -1,6 +1,5 @@
 import React from "react";
 import AdminPage from "../pages/AdminPage";
-import ProductList from "../components/products/ProductsList";
 import { Route, Routes } from "react-router-dom";
 
 import CartPage from "../pages/CartPage";
@@ -13,7 +12,7 @@ import HomePage from "../pages/HomePage";
 import ProductsPage from "../pages/ProductsPage";
 import AuthPage from "../pages/AuthPage";
 
-const MainRoute = () => {
+const AppRoutes = () => {
   return (
     <div>
       <Routes>
@@ -34,4 +33,4 @@ const MainRoute = () => {
   );
 };
 
-export default MainRoute;
+export default AppRoutes;
