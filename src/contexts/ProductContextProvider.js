@@ -156,6 +156,14 @@ function ProductContextProvider({children}){
   }
 // ! likes finish
 
+// ! maxPrice
+// async function getMaxPrice() {
+//   const { data } = await axios(
+//     `${JSON_API_CONSTS}`
+//   );
+// }
+// ! maxPrice finish
+
 
 
 
