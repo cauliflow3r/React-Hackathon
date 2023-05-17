@@ -48,6 +48,7 @@ const DrawingPage = () => {
         nsfw,
         drawing: dataURL,
         likes: 0,
+        disLikes: 0,
       };
       await axios.post("http://localhost:8000/drawings", drawingData);
 
