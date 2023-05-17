@@ -43,10 +43,15 @@ export default function ProductCard({ item }) {
         />
       ) : (
         <CardMedia
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/details/${item.id}`);
+          }}
           component="img"
           height="140"
           image={item.drawing}
           alt="green iguana"
+          sx={{ cursor: "pointer" }}
         />
       )}
 

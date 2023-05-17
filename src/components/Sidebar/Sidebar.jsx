@@ -45,7 +45,7 @@ export default function Sidebar({ isOpen, handleClose }) {
                   <ListItemIcon>
                     <AddShoppingCartIcon />
                   </ListItemIcon>
-                  <ListItemText primary={"Cart"} />
+                  <ListItemText className="text" primary={"Cart"} />
                 </ListItemButton>
               </Link>
             </ListItem>

@@ -33,8 +33,10 @@ const ProductDetails = () => {
         <Card
           sx={{
             maxWidth: 500,
-            border: "2px black solid",
-            borderRadius: 5,
+            borderRight: "2px solid black",
+            borderBottom: "2px solid black",
+
+            borderRadius: 2,
           }}
         >
           <CardMedia
