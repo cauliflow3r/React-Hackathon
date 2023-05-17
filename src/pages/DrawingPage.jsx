@@ -4,6 +4,7 @@ import "../components/Styles/DrawingPage.css";
 import Canvas from "../components/Canvas/Canvas";
 import CanvasForm from "../components/Canvas/CanvasForm";
 import { Box } from "@mui/system";
+import DrawingToolbar from "../components/DrawingToolbar";
 
 const DrawingPage = () => {
   const canvasRef = useRef(null);
@@ -43,7 +44,6 @@ const DrawingPage = () => {
         description,
         price,
         comments,
-        type,
         nsfw,
         drawing: dataURL,
         likes: 0,
@@ -86,49 +86,24 @@ const DrawingPage = () => {
 
   return (
     <section className="container">
-      <Box>
-        <div className="toolbar" ref={toolbarRef}>
-          <div className="column">
-            <h1>Draw</h1>
-            <label htmlFor="stroke">Color</label>
-            <input
-              id="stroke"
-              name="stroke"
-              type="color"
-              value={strokeColor}
-              onChange={(e) => setStrokeColor(e.target.value)}
-            />
-            <label htmlFor="lineWidth">Line Width</label>
-            <input
-              id="lineWidth"
-              name="lineWidth"
-              type="range"
-              min="1"
-              max="30"
-              value={lineWidth}
-              onChange={(e) => setLineWidth(parseInt(e.target.value))}
-            />
-            <button id="clear" onClick={handleClear}>
-              <span class="button_top"> Clear</span>
-            </button>
-            <button onClick={() => setIsFormOpen(!isFormOpen)}>
-              <span class="button_top"> Button</span>
-            </button>
-            <CanvasForm
-              name={name}
-              setName={setName}
-              description={description}
-              setDescription={setDescription}
-              price={price}
-              setPrice={setPrice}
-              handleNsfw={handleNsfw}
-              type={type}
-              setType={setType}
-              handleSubmit={handleSubmit}
-            />
-          </div>
-        </div>
-      </Box>
+      <DrawingToolbar
+        ref={toolbarRef}
+        strokeColor={strokeColor}
+        setStrokeColor={setStrokeColor}
+        lineWidth={lineWidth}
+        setLineWidth={setLineWidth}
+        name={name}
+        setName={setName}
+        description={description}
+        setDescription={setDescription}
+        price={price}
+        setPrice={setPrice}
+        handleNsfw={handleNsfw}
+        type={type}
+        setType={setType}
+        handleSubmit={handleSubmit}
+        handleClear={handleClear}
+      />
 
       <div className="drawing-container">
         <div className="drawing-board">

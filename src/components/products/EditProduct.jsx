@@ -1,4 +1,13 @@
-import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
@@ -87,7 +96,20 @@ const EditProduct = () => {
           onChange={handleInp}
           value={product.type || ""}
         />
-
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={product.type}
+            label="Type"
+            onChange={handleInp}
+          >
+            <MenuItem value={"Still life"}>Ten</MenuItem>
+            <MenuItem value={"20"}>Twenty</MenuItem>
+            <MenuItem value={"30"}>Thirty</MenuItem>
+          </Select>
+        </FormControl>
         <Button
           onClick={() => saveEditedProduct(product)}
           fullWidth
