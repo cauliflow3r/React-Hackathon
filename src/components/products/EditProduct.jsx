@@ -84,29 +84,20 @@ const EditProduct = () => {
           value={product.price || ""}
         />
 
-        <TextField
-          sx={{ marginBottom: "10px" }}
-          fullWidth
-          id="outlined-basic"
-          label="type"
-          variant="outlined"
-          size="small"
-          name="type"
-          onChange={handleInp}
-          value={product.type || ""}
-        />
         <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <InputLabel id="demo-simple-select-label">Type</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             value={product.type}
             label="Type"
+            name="type"
             onChange={handleInp}
           >
-            <MenuItem value={"Still life"}>Ten</MenuItem>
-            <MenuItem value={"20"}>Twenty</MenuItem>
-            <MenuItem value={"30"}>Thirty</MenuItem>
+            <MenuItem value={"Still life"}>Still Life</MenuItem>
+            <MenuItem value={"Landscape"}>Landscape</MenuItem>
+            <MenuItem value={"Portrait"}>Portrait</MenuItem>
+            <MenuItem value={"Other"}>Other</MenuItem>
           </Select>
         </FormControl>
         <Button

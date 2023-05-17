@@ -44,6 +44,7 @@ const DrawingPage = () => {
         description,
         price,
         comments,
+        type,
         nsfw,
         drawing: dataURL,
         likes: 0,

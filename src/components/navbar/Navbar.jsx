@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SearchProducts from "./components/search/SeachProducts";
 import { useAuth } from "../../contexts/AuthContextProvider";
 import newlogo from "../svg/Screenshot 2023-05-16 at 14.13.41.png";
+import logoutIMG from "../svg/logout.png";
 
 import classes from "./Navbar.module.css";
 import Sidebar from "../Sidebar/Sidebar";
@@ -24,6 +25,7 @@ const Navbar = () => {
     handleLogout,
     user: { email },
   } = useAuth();
+  console.log(email);
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -80,14 +82,27 @@ const Navbar = () => {
               }}
             >
               <Box>
-                <Link to="/auth">
-                  <img
-                    style={{ maxWidth: "100px" }}
-                    className={classes.logo}
-                    src={icon_black}
-                    alt="logo"
-                  />
-                </Link>
+                {email ? (
+                  <Link to="/auth">
+                    <img
+                      style={{ maxWidth: "100px" }}
+                      className={classes.logo}
+                      src={logoutIMG}
+                      alt="logo"
+                      onClick={handleLogout}
+                    />
+                  </Link>
+                ) : (
+                  <Link to="/auth">
+                    <img
+                      style={{ maxWidth: "100px" }}
+                      className={classes.logo}
+                      src={icon_black}
+                      alt="logo"
+                    />
+                  </Link>
+                )}
+
                 <Link to="/">
                   <img
                     className={classes.newLogo}
@@ -144,7 +159,7 @@ const Navbar = () => {
           open={isMenuOpen}
           onClose={handleMenuClose}
         >
-          {email ? (
+          {/* {email ? (
             <MenuList>
               <MenuItem>hello, {email}!</MenuItem>
               <MenuItem
@@ -158,7 +173,7 @@ const Navbar = () => {
             </MenuList>
           ) : (
             <MenuItem onClick={() => navigate("/auth")}>Login</MenuItem>
-          )}
+          )} */}
         </Menu>
       </div>
     </>

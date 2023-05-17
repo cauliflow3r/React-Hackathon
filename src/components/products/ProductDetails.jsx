@@ -57,40 +57,49 @@ const ProductDetails = () => {
           </CardActions>
         </Card>
       </div>
+      {email ? (
+        <div style={{ flex: 1 }}>
+          <div>
+            <h3>comments</h3>
+            {productDetails.comments.length ? (
+              productDetails.comments.map((a, index) => (
+                <div key={index}>
+                  <p>{a.user}</p>
+                  <p>{a.comment}</p>
+                </div>
+              ))
+            ) : (
+              <p>No comments yet.</p>
+            )}
+          </div>
 
-      <div style={{ flex: 1 }}>
-        <div>
-          <h3>comments</h3>
-          {productDetails.comments.length ? (
-            productDetails.comments.map((a, index) => (
-              <div key={index}>
-                <p>{a.user}</p>
-                <p>{a.comment}</p>
-              </div>
-            ))
-          ) : (
-            <p>No comments yet.</p>
-          )}
+          <div>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const newObj = {
+                  ...commentsState,
+                  user: email,
+                  comment: inputCom,
+                };
+                console.log("newObj", newObj);
+                setComments(newObj);
+              }}
+            >
+              <input
+                type="text"
+                value={inputCom}
+                onChange={(e) => setInputCom(e.target.value)}
+              />
+              <button type="submit">comment</button>
+            </form>
+          </div>
         </div>
-
-        <div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const newObj = { ...commentsState, comment: inputCom };
-              console.log("newObj", newObj);
-              setComments(newObj);
-            }}
-          >
-            <input
-              type="text"
-              value={inputCom}
-              onChange={(e) => setInputCom(e.target.value)}
-            />
-            <button type="submit">comment</button>
-          </form>
-        </div>
-      </div>
+      ) : (
+        <Box>
+          <Typography>"Please login to see comments"</Typography>
+        </Box>
+      )}
     </div>
   );
 };
