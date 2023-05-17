@@ -6,7 +6,7 @@ import SideBar from "../components/products/SideBar";
 const ProductsPage = () => {
   return (
     <div>
-      <Box sx={{ height: "50px" }} />
+      <Box sx={{ height: "100px" }} />
       <ProductList />
       <SideBar />
     </div>
