@@ -14,6 +14,8 @@ import {
   Switch,
 } from "@mui/material";
 import "../Styles/CanvasForm.css";
+import { useNavigate } from "react-router";
+import { useProducts } from "../../contexts/ProductContextProvider";
 
 export default function CanvasForm({
   name,
@@ -28,6 +30,7 @@ export default function CanvasForm({
   handleSubmit,
 }) {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -36,6 +39,8 @@ export default function CanvasForm({
   const handleClose = () => {
     setOpen(false);
   };
+
+  const { maxPrice, setMaxPrice } = useProducts();
 
   return (
     <div>
@@ -101,7 +106,19 @@ export default function CanvasForm({
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button
+            onClick={(e) => {
+              handleSubmit(e);
+              navigate("/products");
+              if (price > maxPrice) {
+                setMaxPrice(price);
+              }
+              console.log("price", price);
+              console.log("maxPrice", maxPrice);
+            }}
+          >
+            Submit
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

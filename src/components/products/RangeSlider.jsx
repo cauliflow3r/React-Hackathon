@@ -8,9 +8,8 @@ function valuetext(value) {
 }
 
 export default function RangeSlider() {
-  const [value, setValue] = React.useState([0, 1000]);
-
-  const { fetchByParams } = useProducts();
+  const { fetchByParams, maxPrice } = useProducts();
+  const [value, setValue] = React.useState([0, maxPrice]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -21,7 +20,7 @@ export default function RangeSlider() {
     <Box sx={{ padding: "20px" }}>
       <Slider
         min={0}
-        max={10000}
+        max={maxPrice}
         getAriaLabel={() => "Temperature range"}
         value={value}
         onChange={handleChange}

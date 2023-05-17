@@ -18,7 +18,6 @@ const DrawingPage = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [nsfw, setNsfw] = useState(false);
-  const [type, setType] = useState("");
 
   const handleNsfw = () => {
     setNsfw(!nsfw);
@@ -41,15 +40,11 @@ const DrawingPage = () => {
 
       const drawingData = {
         name,
-        type,
         description,
         price,
-
         comments,
-
- 
+        type,
         nsfw,
-
         drawing: dataURL,
         likes: 0,
       };

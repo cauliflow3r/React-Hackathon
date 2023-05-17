@@ -64,6 +64,8 @@ export default function Auth() {
       password: data.get("password"),
     });
   };
+  console.log(("user", user));
+  console.log(("user.email", user.email));
 
   return (
     <ThemeProvider theme={theme}>
