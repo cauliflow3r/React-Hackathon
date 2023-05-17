@@ -11,22 +11,24 @@ import ListItemText from "@mui/material/ListItemText";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Link } from "react-router-dom";
 
-export default function Sidebar({ isOpen, handleClose }) {
+export default function Sidebar({ isOpen, handleClose, email }) {
   return (
     <div>
       <Drawer anchor={"right"} open={isOpen} onClose={handleClose}>
         <Box role="presentation" onClick={handleClose} onKeyDown={handleClose}>
           <List>
-            <ListItem disablePadding>
-              <Link to="/draw">
-                <ListItemButton>
-                  <ListItemIcon>
-                    <DrawIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={"Draw"} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
+            {email ? (
+              <ListItem disablePadding>
+                <Link to="/draw">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <DrawIcon />
+                    </ListItemIcon>
+                    <ListItemText primary={"Draw"} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ) : null}
 
             <ListItem disablePadding>
               <Link to="/products">
@@ -38,17 +40,18 @@ export default function Sidebar({ isOpen, handleClose }) {
                 </ListItemButton>
               </Link>
             </ListItem>
-
-            <ListItem disablePadding>
-              <Link to="/cart">
-                <ListItemButton>
-                  <ListItemIcon>
-                    <AddShoppingCartIcon />
-                  </ListItemIcon>
-                  <ListItemText className="text" primary={"Cart"} />
-                </ListItemButton>
-              </Link>
-            </ListItem>
+            {email ? (
+              <ListItem disablePadding>
+                <Link to="/cart">
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <AddShoppingCartIcon />
+                    </ListItemIcon>
+                    <ListItemText className="text" primary={"Cart"} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ) : null}
           </List>
         </Box>
       </Drawer>
