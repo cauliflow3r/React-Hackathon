@@ -27,6 +27,7 @@ export default function ProductCard({ item }) {
         height: "90%",
         borderBottom: "2px solid black",
         borderRight: "2px solid black",
+        marginBottom: "20px",
       }}
     >
       {item.nsfw ? (

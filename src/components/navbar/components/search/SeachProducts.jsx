@@ -54,7 +54,7 @@ const SearchProducts = () => {
   const [search, setSearch] = useState(searchParams.get("q") || "");
 
   return (
-    <div className={classes.search}>
+    <div className={classes.remove}>
       <form
         action=""
         onSubmit={(e) => {
