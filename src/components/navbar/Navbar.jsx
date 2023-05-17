@@ -150,7 +150,11 @@ const Navbar = () => {
           </navbar>
         </Box>
 
-        <Sidebar isOpen={isDrawerOpen} handleClose={handleDrawerClose} />
+        <Sidebar
+          isOpen={isDrawerOpen}
+          handleClose={handleDrawerClose}
+          email={email}
+        />
 
         <Menu
           anchorEl={anchorEl}
