@@ -18,13 +18,30 @@ export default function ProductCard({ item }) {
   const navigate = useNavigate();
 
   return (
-    <Card className="card" sx={{ maxWidth: 300, height: "100%" }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image={item.drawing}
-        alt="green iguana"
-      />
+    <Card
+      className="card"
+      sx={{
+        maxWidth: 300,
+        height: "100%",
+      }}
+    >
+      {item.nsfw ? (
+        <CardMedia
+          component="img"
+          height="140"
+          image={item.drawing}
+          alt="green iguana"
+          sx={{ filter: "blur(5px)" }}
+        />
+      ) : (
+        <CardMedia
+          component="img"
+          height="140"
+          image={item.drawing}
+          alt="green iguana"
+        />
+      )}
+
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {item.name}

@@ -94,6 +94,7 @@ export default function CanvasForm({
               <MenuItem value={"Portrait"}>Portrait</MenuItem>
               <MenuItem value={"Landscape"}>Landscape</MenuItem>
               <MenuItem value={"Still life"}>Still life</MenuItem>
+              <MenuItem value={"Other"}>Other</MenuItem>
             </Select>
           </FormControl>
           <Switch onClick={handleNsfw} />
