@@ -23,8 +23,8 @@ export default function ProductCard({ item }) {
     <Card
       className="card"
       sx={{
-        maxWidth: 300,
-        height: "100%",
+        maxWidth: 400,
+        height: "90%",
         borderBottom: "2px solid black",
         borderRight: "2px solid black",
       }}
