@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../components/Styles/HomePage.css";
+import icon_black from "../components/svg/login.png";
+import step2 from "../components/svg/Screenshot 2023-05-17 at 23.20.48.png";
+import step4 from "../components/svg/draw.png";
+import step5 from "../components/svg/gallery.png";
 
 const HomePage = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -28,61 +32,46 @@ const HomePage = () => {
           <li className={activeSection === "section1" ? "active" : ""}>
             <a href="#section1">
               <span className="nav__counter">01</span>
-              <h3 className="nav__title">Intro</h3>
+              <h3 className="nav__title">Step</h3>
               <p className="nav__body">
-                <strong>Timeline-style navigation</strong>. Scroll down to see
-                what happens, or click on a number in the nav.
+                <strong>Приветствуем вас на нашем сайте</strong>. Скрольте вниз
+                .
               </p>
             </a>
           </li>
           <li className={activeSection === "section2" ? "active" : ""}>
             <a href="#section2">
               <span className="nav__counter">02</span>
-              <h3 className="nav__title">Section 2 Title</h3>
-              <p className="nav__body">
-                Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius
-                mi, sit amet condimentum lacus.
-              </p>
+              <h3 className="nav__title">Step</h3>
+              <p className="nav__body">Зарегистрируйтесь.</p>
             </a>
           </li>
           <li className={activeSection === "section3" ? "active" : ""}>
             <a href="#section3">
               <span className="nav__counter">03</span>
-              <h3 className="nav__title">Section 3 Title</h3>
-              <p className="nav__body">
-                Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius
-                mi, sit amet condimentum lacus.
-              </p>
+              <h3 className="nav__title">Step</h3>
+              <p className="nav__body">войдите в свой аккаунт</p>
             </a>
           </li>
           <li className={activeSection === "section4" ? "active" : ""}>
             <a href="#section4">
               <span className="nav__counter">04</span>
-              <h3 className="nav__title">Section 4 Title</h3>
-              <p className="nav__body">
-                Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius
-                mi, sit amet condimentum lacus.
-              </p>
+              <h3 className="nav__title">Step</h3>
+              <p className="nav__body">нарисуйте что-то</p>
             </a>
           </li>
           <li className={activeSection === "section5" ? "active" : ""}>
             <a href="#section5">
               <span className="nav__counter">05</span>
-              <h3 className="nav__title">Section 5 Title</h3>
-              <p className="nav__body">
-                Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius
-                mi, sit amet condimentum lacus.
-              </p>
+              <h3 className="nav__title">Step</h3>
+              <p className="nav__body">Зайдите в галерею</p>
             </a>
           </li>
           <li className={activeSection === "section6" ? "active" : ""}>
             <a href="#section6">
               <span className="nav__counter">06</span>
-              <h3 className="nav__title">Section 6 Title</h3>
-              <p className="nav__body">
-                Sed sit amet justo sed odio tempus tempus. Vestibulum sed varius
-                mi, sit amet condimentum lacus.
-              </p>
+              <h3 className="nav__title">Step</h3>
+              <p className="nav__body">Потыкайте по сайту .</p>
             </a>
           </li>
         </ul>
@@ -94,7 +83,7 @@ const HomePage = () => {
         }`}
         id="section1"
       >
-        Scroll down or use the nav.
+        Hello World!
       </section>
       <section
         className={`section section2 ${
@@ -102,7 +91,7 @@ const HomePage = () => {
         }`}
         id="section2"
       >
-        Section 2
+        <img src={step2} style={{ maxWidth: "400px" }} alt="" />
       </section>
       <section
         className={`section section3 ${
@@ -110,7 +99,7 @@ const HomePage = () => {
         }`}
         id="section3"
       >
-        Section 3
+        <img src={icon_black} alt="" />
       </section>
       <section
         className={`section section4 ${
@@ -118,7 +107,7 @@ const HomePage = () => {
         }`}
         id="section4"
       >
-        Section 4
+        <img src={step4} style={{ maxWidth: "400px" }} alt="" />
       </section>
       <section
         className={`section section5 ${
@@ -126,7 +115,7 @@ const HomePage = () => {
         }`}
         id="section5"
       >
-        Section 5
+        <img src={step5} style={{ maxWidth: "400px" }} alt="" />
       </section>
       <section
         className={`section section6 ${
@@ -134,7 +123,7 @@ const HomePage = () => {
         }`}
         id="section6"
       >
-        Section 6
+        ТЫК! ТЫК!
       </section>
     </div>
   );
