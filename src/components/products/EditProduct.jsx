@@ -11,7 +11,6 @@ import {
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/ProductContextProvider";
-import { FormControl, MenuItem, Select } from "@mui/base";
 
 const EditProduct = () => {
   const { saveEditedProduct, getProductDetails, productDetails } =
