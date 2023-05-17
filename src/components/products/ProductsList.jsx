@@ -41,7 +41,7 @@ const ProductList = () => {
     <>
       <Grid
         sx={{
-          marginTop: 15,
+          marginTop: 20,
         }}
         item
         md={9}
@@ -63,6 +63,7 @@ const ProductList = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            marginBottom: 5,
           }}
         >
           <Pagination
@@ -70,7 +71,6 @@ const ProductList = () => {
             page={page}
             onChange={handleChange}
             variant="outlined"
-            color="secondary"
           />
         </Box>
       </Grid>

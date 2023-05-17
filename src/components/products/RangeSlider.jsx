@@ -17,7 +17,7 @@ export default function RangeSlider() {
   };
 
   return (
-    <Box sx={{ padding: "20px" }}>
+    <Box sx={{ padding: "20px", width: 400 }}>
       <Slider
         min={0}
         max={maxPrice}
