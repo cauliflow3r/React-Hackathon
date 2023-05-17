@@ -30,14 +30,29 @@ const ProductDetails = () => {
   return (
     <div style={{ display: "flex" }}>
       <div style={{ flex: 1, marginRight: "16px" }}>
-        <Card sx={{ maxWidth: 500 }}>
+        <Card
+          sx={{
+            maxWidth: 500,
+            border: "2px black solid",
+            borderRadius: 5,
+          }}
+        >
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 350 }}
             image={productDetails.drawing}
-            title="green iguana"
+            title="Drawing"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography
+              sx={{
+                backgroundColor: "antiquewhite",
+                padding: "2px",
+                border: "2px black solid",
+              }}
+              gutterBottom
+              variant="h5"
+              component="div"
+            >
               {productDetails.name}
             </Typography>
             <Typography gutterBottom variant="h5" component="div">
@@ -47,7 +62,7 @@ const ProductDetails = () => {
               {productDetails.description}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {productDetails.price}
+              {productDetails.price}$
             </Typography>
           </CardContent>
           <CardActions>
@@ -75,8 +90,7 @@ const ProductDetails = () => {
 
           <div>
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
+              onSubmit={() => {
                 const newObj = {
                   ...commentsState,
                   user: email,

@@ -11,6 +11,8 @@ import { IconButton, Grid } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useCart } from "../../contexts/CartContextProvider";
 import "../Styles/ProductCard.css";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 
 export default function ProductCard({ item }) {
   const { deleteProduct } = useProducts();
@@ -23,15 +25,21 @@ export default function ProductCard({ item }) {
       sx={{
         maxWidth: 300,
         height: "100%",
+        borderBottom: "2px solid black",
+        borderRight: "2px solid black",
       }}
     >
       {item.nsfw ? (
         <CardMedia
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate(`/details/${item.id}`);
+          }}
           component="img"
           height="140"
           image={item.drawing}
           alt="green iguana"
-          sx={{ filter: "blur(5px)" }}
+          sx={{ filter: "blur(5px)", cursor: "pointer" }}
         />
       ) : (
         <CardMedia
@@ -50,12 +58,18 @@ export default function ProductCard({ item }) {
           {item.description}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {item.price}
+          {item.price}$
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
           Edit
+        </Button>
+        <Button>
+          <ThumbUpIcon />
+        </Button>
+        <Button>
+          <ThumbDownAltIcon />
         </Button>
         <Button size="small" onClick={() => deleteProduct(item.id)}>
           Delete
@@ -65,9 +79,6 @@ export default function ProductCard({ item }) {
             color={checkProductInCart(item.id) ? "primary" : undefined}
           />
         </IconButton>
-        <Button size="small" onClick={() => navigate(`/details/${item.id}`)}>
-          Details
-        </Button>
       </CardActions>
     </Card>
   );

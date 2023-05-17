@@ -58,13 +58,21 @@ const ProductList = () => {
             <ProductCard key={item.id} item={item} />
           ))}
         </Box>
-        <Pagination
-          count={count}
-          page={page}
-          onChange={handleChange}
-          variant="outlined"
-          color="secondary"
-        />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Pagination
+            count={count}
+            page={page}
+            onChange={handleChange}
+            variant="outlined"
+            color="secondary"
+          />
+        </Box>
       </Grid>
     </>
   );

@@ -138,6 +138,8 @@ function ProductContextProvider({children}){
 
 
 
+
+
     const values ={addProduct,     products: state.products,
     productDetails: state.productDetails,
     getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState, setMaxPrice, maxPrice
