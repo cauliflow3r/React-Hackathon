@@ -1,11 +1,11 @@
 import React from "react";
 import AppRoutes from "./routes/AppRoutes";
-import AxyenniyNavbar from "./components/navbar/AxyenniyNavbar";
+import Navbar from "./components/navbar/Navbar";
 
 const App = () => {
   return (
     <div>
-      <AxyenniyNavbar />
+      <Navbar />
       <AppRoutes />
     </div>
   );

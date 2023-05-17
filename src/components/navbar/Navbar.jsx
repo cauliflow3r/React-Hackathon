@@ -1,41 +1,29 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
+import React, { useState } from "react";
+import icon_black from "../svg/login.png";
+import "../Styles/AxyenniyNavbar.css";
+import { Box, IconButton, Menu, MenuItem, MenuList } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import MoreIcon from "@mui/icons-material/MoreVert";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { Link } from "react-router-dom";
-import { useCart } from "../../contexts/CartContextProvider";
-import { getCountProductsInCart } from "../../helpers/function";
-import SearchProducts from "../search/SeachProducts";
-import "../Styles/Navbar.css";
+import { grey } from "@mui/material/colors";
+import { Link, useNavigate } from "react-router-dom";
+import SearchProducts from "./components/search/SeachProducts";
+import { useAuth } from "../../contexts/AuthContextProvider";
+import newlogo from "../svg/Screenshot 2023-05-16 at 14.13.41.png";
 
-export default function PrimarySearchAppBar() {
+import classes from "./Navbar.module.css";
+import Sidebar from "../Sidebar/Sidebar";
+
+const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const [count, setCount] = React.useState(0);
+  const navigate = useNavigate();
 
-  const { addProductToCart } = useCart();
-
-  React.useEffect(() => {
-    setCount(getCountProductsInCart);
-  }, [addProductToCart]);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const {
+    handleLogout,
+    user: { email },
+  } = useAuth();
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -49,162 +37,132 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
   const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
+  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const menuId = "primary-search-account-menu";
+  const isMenuOpen = Boolean(anchorEl);
 
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
+  const handleDrawerOpen = (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setIsDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => setIsDrawerOpen(false);
 
   return (
-    <Box
-      sx={{
-        flexGrow: 1,
-      }}
-    >
-      <AppBar position="absolute">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            MUI
-          </Typography>
-          {/* search toot */}
-          <SearchProducts />
-
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <Link to="/draw">
-              <button>
-                <span className="button_top"> Draw</span>
-              </button>
-            </Link>
-            <Link to="/products">
-              <button>
-                <span className="button_top"> Products</span>
-              </button>
-            </Link>
-            <IconButton
-              size="large"
-              aria-label="show 4 new mails"
-              color="inherit"
+    <>
+      <div>
+        <Box
+          sx={{
+            position: "absolute",
+            display: "flex",
+            top: 0,
+            width: "100%",
+            height: "100px",
+            backgroundColor: "rgb(33, 33, 33)",
+            justifyContent: "center",
+          }}
+        >
+          <navbar>
+            <div
+              className={classes.container}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
             >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
+              <Box>
+                <Link to="/auth">
+                  <img
+                    style={{ maxWidth: "100px" }}
+                    className={classes.logo}
+                    src={icon_black}
+                    alt="logo"
+                  />
+                </Link>
+                <Link to="/">
+                  <img
+                    className={classes.newLogo}
+                    style={{ maxHeight: "100px" }}
+                    src={newlogo}
+                    alt=""
+                  />
+                </Link>
+              </Box>
 
-            {/* ======== cart btn starts here ==============*/}
-            <Link to="/cart">
-              <IconButton
-                size="large"
-                aria-label="show 1 new mails"
-                color="inherit"
+              <div className={classes.navControllers}>
+                <SearchProducts />
+
+                <IconButton onClick={handleDrawerOpen}>
+                  <MenuIcon sx={{ color: grey[50] }} />
+                </IconButton>
+              </div>
+
+              {/* <div className={classes.navigation_buttons}>
+                <Link to="/draw">
+                  <button>
+                    <span class="button_top"> Draw</span>
+                  </button>
+                </Link>
+                <Link to="/products">
+                  <button>
+                    <span class="button_top"> Gallery</span>
+                  </button>
+                </Link>
+                <Link to="cart">
+                  <button>
+                    <span class="button_top"> Cart</span>
+                  </button>
+                </Link>
+              </div> */}
+            </div>
+          </navbar>
+        </Box>
+
+        <Sidebar isOpen={isDrawerOpen} handleClose={handleDrawerClose} />
+
+        <Menu
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          id={menuId}
+          keepMounted
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={isMenuOpen}
+          onClose={handleMenuClose}
+        >
+          {email ? (
+            <MenuList>
+              <MenuItem>hello, {email}!</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleLogout();
+                  handleMenuClose();
+                }}
               >
-                <Badge badgeContent={count} color="error">
-                  <ShoppingCartIcon sx={{ color: "white" }} />
-                </Badge>
-              </IconButton>
-            </Link>
-            {/* ======== cart btn starts here=========== */}
-
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
+                Logout
+              </MenuItem>
+            </MenuList>
+          ) : (
+            <MenuItem onClick={() => navigate("/auth")}>Login</MenuItem>
+          )}
+        </Menu>
+      </div>
+    </>
   );
-}
+};
+
+export default Navbar;

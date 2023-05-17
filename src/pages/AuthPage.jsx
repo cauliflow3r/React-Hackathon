@@ -1,11 +1,13 @@
 import React from "react";
+import { Box } from "@mui/material";
 import Auth from "../components/auth/Auth";
 
 const AuthPage = () => {
   return (
-    <div>
+    <>
+      <Box sx={{ height: 100 }} />
       <Auth />
-    </div>
+    </>
   );
 };
 

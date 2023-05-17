@@ -3,7 +3,9 @@ import { InputBase, TextField, alpha } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import { useProducts } from "../../contexts/ProductContextProvider";
+import { useProducts } from "../../../../contexts/ProductContextProvider";
+
+import classes from "../../Navbar.module.css";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -51,13 +53,8 @@ const SearchProducts = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get("q") || "");
 
-  //   useEffect(() => {
-  //     setSearchParams({
-  //       q: search,
-  //     });
-  //   }, [search]);
   return (
-    <div>
+    <div className={classes.search}>
       <form
         action=""
         onSubmit={(e) => {
@@ -71,7 +68,7 @@ const SearchProducts = () => {
         <input
           placeholder="Search"
           name="text"
-          className="input"
+          className={classes.input}
           type="text"
           value={search}
           onChange={(e) => {
