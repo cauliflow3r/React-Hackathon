@@ -1,4 +1,5 @@
 export const JSON_API_PRODUCTS = "http://localhost:8000/drawings";
+export const JSON_API_CONSTS = "http://localhost:8000/consts";
 
 export const ACTIONS = {
   GET_PRODUCTS: "GET_PRODUCTS",

@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useState } from "react";
-import { ACTIONS, JSON_API_PRODUCTS } from "../helpers/consts";
+import { ACTIONS, JSON_API_CONSTS, JSON_API_PRODUCTS } from "../helpers/consts";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -13,7 +13,8 @@ export const useProducts = () => {
 const INIT_STATE = {
     products: [],
     productDetails: {},
-    commentsState: {comment: "", user: "user"}
+    commentsState: {comment: "", user: "user"},
+    consts: {}
   };
   
   // функция , которая в зависимости от action.type, меняет определенную часть состояния
@@ -27,6 +28,8 @@ const INIT_STATE = {
 
       case "ADD_COMMENTS":
         return { ...state, commentsState: action.payload };
+      case "ADD_CONSTS":
+        return { ...state, consts: action.payload };
   
       default:
         return state;
@@ -133,6 +136,25 @@ function ProductContextProvider({children}){
   }
 
   // ! comments finish
+  // ! likes 
+  // async function getLikes() {
+  //   const { data } = await axios(`${JSON_API_CONSTS}`);
+  //   console.log(data);
+  //   dispatch({ type: "ADD_CONSTS", payload: data });
+  // }
+
+  async function setLike(newProduct) {
+    const newLike = {...newProduct ,likes: newProduct.likes + 1};
+    await axios.patch(`${JSON_API_PRODUCTS}/${newProduct.id}`, newLike);
+    getProducts();
+  }
+  async function setDisLike(newProduct) {
+    console.log("newProduct",newProduct);
+    const newLike = {...newProduct ,disLikes: newProduct.disLikes + 1};
+    await axios.patch(`${JSON_API_PRODUCTS}/${newProduct.id}`, newLike);
+    getProducts();
+  }
+// ! likes finish
 
 
 
@@ -140,9 +162,10 @@ function ProductContextProvider({children}){
 
     const values ={addProduct,     products: state.products,
     productDetails: state.productDetails,
-    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState, setMaxPrice, maxPrice
-    }
+    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState, setMaxPrice, maxPrice, setLike, 
+    setDisLike
 
+    }
     return <productContext.Provider value={values}>{children}</productContext.Provider>
 }
 

@@ -25,7 +25,7 @@ const Navbar = () => {
     handleLogout,
     user: { email },
   } = useAuth();
-  console.log(email);
+  // console.log(email);
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);

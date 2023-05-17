@@ -15,7 +15,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 
 export default function ProductCard({ item }) {
-  const { deleteProduct } = useProducts();
+  const { deleteProduct, setLike, setDisLike } = useProducts();
   const { addProductToCart, checkProductInCart } = useCart();
   const navigate = useNavigate();
 
@@ -70,10 +70,22 @@ export default function ProductCard({ item }) {
         <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
           Edit
         </Button>
-        <Button>
+
+        <p>{item.likes}</p>
+
+        <Button
+          onClick={() => {
+            setLike(item);
+          }}
+        >
           <ThumbUpIcon />
         </Button>
-        <Button>
+        <p>{item.disLikes}</p>
+        <Button
+          onClick={() => {
+            setDisLike(item);
+          }}
+        >
           <ThumbDownAltIcon />
         </Button>
         <Button size="small" onClick={() => deleteProduct(item.id)}>
