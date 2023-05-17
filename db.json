@@ -1,8 +1,11 @@
 {
   "products": [],
-  "consts": {},
+  "consts": {
+    "maxPrice": 100
+  },
   "drawings": [
     {
+
       "name": "Aidoha",
       "description": "heart",
       "price": 10000000,
@@ -30,6 +33,7 @@
       "likes": 0,
       "disLikes": 0,
       "id": 4
+
     }
   ]
 }
