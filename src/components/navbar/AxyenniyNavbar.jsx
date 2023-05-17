@@ -63,14 +63,25 @@ const AxyenniyNavbar = () => {
               alignItems: "center",
             }}
           >
-            <Link to="/auth">
-              <img
-                style={{ maxWidth: "100px" }}
-                className="logo"
-                src={icon_black}
-                alt="logo"
-              />
-            </Link>
+            {email ? (
+              <Link
+                onClick={() => {
+                  handleLogout();
+                }}
+              >
+                log out
+              </Link>
+            ) : (
+              <Link to="/auth">
+                <img
+                  style={{ maxWidth: "100px" }}
+                  className="logo"
+                  src={icon_black}
+                  alt="logo"
+                />
+              </Link>
+            )}
+
             <Link to="/">
               <img
                 className="newLogo"

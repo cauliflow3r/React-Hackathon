@@ -87,6 +87,9 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
+  console.log(("user", user));
+  console.log(("user.email", user.email));
+
   useEffect(() => {
     authListener();
   }, []);

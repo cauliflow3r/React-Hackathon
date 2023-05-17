@@ -119,9 +119,9 @@ function ProductContextProvider({children}){
   async function setComments(obj) {
     state.productDetails.comments.push(obj)
     const newObj = {...state.productDetails, comments: state.productDetails.comments};
-    console.log(newObj);
+    // console.log(newObj);
     // console.log(state.productDetails.comments.push(obj));
-    console.log("state.productDetails",state.productDetails);
+    // console.log("state.productDetails",state.productDetails);
     await axios.patch(`${JSON_API_PRODUCTS}/${state.productDetails.id}`, newObj);
   }
 

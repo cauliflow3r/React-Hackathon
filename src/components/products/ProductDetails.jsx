@@ -11,16 +11,20 @@ import {
   Typography,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContextProvider";
 
 const ProductDetails = () => {
+  const {
+    user: { email },
+  } = useAuth();
   const { productDetails, commentsState, setComments, setCommentsState } =
     useProducts();
   const [inputCom, setInputCom] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log("productDetails.comments", productDetails.comments);
-    console.log("commentsState", commentsState);
-  }, []);
+  // useEffect(() => {
+  //   console.log("productDetails.comments", productDetails.comments);
+  //   console.log("commentsState", commentsState);
+  // }, []);
   return (
     <div>
       <Card
@@ -70,33 +74,40 @@ const ProductDetails = () => {
               return (
                 <div>
                   <p>{a.user}</p>
-                  <p>{a.comment}</p>;
+                  <p>{a.comment}</p>
                 </div>
               );
             })
           : null}
       </div>
       <div>
-        <form
-          action=""
-          onSubmit={(e) => {
-            e.preventDefault();
-            const newObj = { ...commentsState, comment: inputCom };
-            console.log("newObj", newObj);
+        {email ? (
+          <form
+            action=""
+            onSubmit={(e) => {
+              // e.preventDefault();
+              const newObj = {
+                ...commentsState,
+                comment: inputCom,
+                user: email,
+              };
+              // console.log("newObj", newObj);
 
-            setComments(newObj);
-          }}
-        >
-          <input
-            type="text"
-            value={inputCom}
-            onChange={(e) => {
-              setInputCom(e.target.value);
-              console.log(inputCom);
+              setComments(newObj);
             }}
-          />
-          <button type="submit">comment</button>
-        </form>
+          >
+            <input
+              type="text"
+              value={inputCom}
+              onChange={(e) => {
+                setInputCom(e.target.value);
+              }}
+            />
+            <button type="submit">comment</button>
+          </form>
+        ) : (
+          <p>зарегистрируйтесь чтобы оставлять комментарии</p>
+        )}
       </div>
       {/* finish comments */}
     </div>
