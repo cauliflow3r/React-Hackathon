@@ -21,7 +21,7 @@ section:nth-child(1) {
 }
 
 section:nth-child(2) {
-  background: white;
+  background: grey;
 }
 
 section:nth-child(3) {
@@ -29,7 +29,7 @@ section:nth-child(3) {
 }
 
 section:nth-child(4) {
-  background: white;
+  background: grey;
 }
 
 section:nth-child(5) {
@@ -37,7 +37,7 @@ section:nth-child(5) {
 }
 
 section:nth-child(6) {
-  background: white;
+  background: grey;
 }
 
 section:nth-child(7) {

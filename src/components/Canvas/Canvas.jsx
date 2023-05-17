@@ -39,9 +39,6 @@ const Canvas = ({ canvasId, strokeColor, lineWidth }, ref) => {
     const canvas = ref.current;
     const ctx = canvas.getContext("2d");
 
-    const canvasOffsetX = canvas.offsetLeft;
-    const canvasOffsetY = canvas.offsetTop;
-
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
 

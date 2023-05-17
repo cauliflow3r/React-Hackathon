@@ -2,6 +2,9 @@
   position: relative;
 }
 .toolbar {
+  position: fixed;
+  z-index: 99;
+  left: 5px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;

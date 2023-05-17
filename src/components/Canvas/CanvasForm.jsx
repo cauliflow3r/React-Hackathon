@@ -8,6 +8,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import {
   FormControl,
+  FormControlLabel,
   InputLabel,
   MenuItem,
   Select,
@@ -102,7 +103,10 @@ export default function CanvasForm({
               <MenuItem value={"Other"}>Other</MenuItem>
             </Select>
           </FormControl>
-          <Switch onClick={handleNsfw} />
+          <FormControlLabel
+            control={<Switch onClick={handleNsfw} color="error" />}
+            label="NSFW"
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
