@@ -13,10 +13,17 @@ import { useCart } from "../../contexts/CartContextProvider";
 import "../Styles/ProductCard.css";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import { ADMIN } from "../../helpers/consts";
+import { useAuth } from "../../contexts/AuthContextProvider";
 
 export default function ProductCard({ item }) {
   const { deleteProduct, setLike, setDisLike } = useProducts();
   const { addProductToCart, checkProductInCart } = useCart();
+  const {
+    user: { email },
+  } = useAuth();
+  console.log(email);
+  console.log(ADMIN);
   const navigate = useNavigate();
 
   return (
@@ -67,9 +74,11 @@ export default function ProductCard({ item }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
-          Edit
-        </Button>
+        {ADMIN === email ? (
+          <Button size="small" onClick={() => navigate(`/edit/${item.id}`)}>
+            Edit
+          </Button>
+        ) : null}
 
         <p>{item.likes}</p>
 
@@ -88,9 +97,12 @@ export default function ProductCard({ item }) {
         >
           <ThumbDownAltIcon />
         </Button>
-        <Button size="small" onClick={() => deleteProduct(item.id)}>
-          Delete
-        </Button>
+        {ADMIN === email ? (
+          <Button size="small" onClick={() => deleteProduct(item.id)}>
+            Delete
+          </Button>
+        ) : null}
+
         <IconButton onClick={() => addProductToCart(item)}>
           <AddShoppingCartIcon
             color={checkProductInCart(item.id) ? "primary" : undefined}
