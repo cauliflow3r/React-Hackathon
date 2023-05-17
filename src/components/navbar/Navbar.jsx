@@ -81,7 +81,13 @@ const Navbar = () => {
                 alignItems: "center",
               }}
             >
-              <Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  flexWrap: "nowrap",
+                }}
+              >
                 {email ? (
                   <Link to="/auth">
                     <img
@@ -114,7 +120,9 @@ const Navbar = () => {
               </Box>
 
               <div className={classes.navControllers}>
-                <SearchProducts />
+                <Box className="remove">
+                  <SearchProducts />
+                </Box>
 
                 <IconButton onClick={handleDrawerOpen}>
                   <MenuIcon sx={{ color: grey[50] }} />
