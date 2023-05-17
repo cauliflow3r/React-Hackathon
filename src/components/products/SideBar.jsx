@@ -1,4 +1,5 @@
 import {
+  Box,
   FormControl,
   FormControlLabel,
   FormLabel,
@@ -17,45 +18,56 @@ const SideBar = () => {
   return (
     <Grid md={3} item>
       <Paper elevation={5}>
-        <Typography variant="h6">Price</Typography>
-        <RangeSlider />
-        <FormControl>
-          <FormLabel id="demo-radio-buttons-group-label">type</FormLabel>
-          <RadioGroup
-            aria-labelledby="demo-radio-buttons-group-label"
-            defaultValue="all"
-            name="radio-buttons-group"
-            onChange={(e) => fetchByParams("type", e.target.value)}
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
           >
-            <FormControlLabel value="all" control={<Radio />} label="All" />
-            <FormControlLabel
-              value="Portrait"
-              control={<Radio />}
-              label="Portrait"
-            />
-            <FormControlLabel
-              value="Landscape"
-              control={<Radio />}
-              label="Landscape"
-            />
-            <FormControlLabel
-              value="Still life"
-              control={<Radio />}
-              label="Still life"
-            />
-            {/* <FormControlLabel
-              value="landscape"
-              control={<Radio />}
-              label="Landscape"
-            />
-            <FormControlLabel
-              value="stillLife"
-              control={<Radio />}
-              label="StillLife"
-            /> */}
-            <FormControlLabel value="Other" control={<Radio />} label="Other" />
-          </RadioGroup>
-        </FormControl>
+            <Typography sx={{ margin: "0 auto" }} variant="h6">
+              Price
+            </Typography>
+            <RangeSlider />
+          </Box>
+          <FormControl>
+            <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              defaultValue="all"
+              name="radio-buttons-group"
+              onChange={(e) => fetchByParams("type", e.target.value)}
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                paddingTop: "45px",
+              }}
+            >
+              <FormControlLabel value="all" control={<Radio />} label="All" />
+              <FormControlLabel
+                value="Portrait"
+                control={<Radio />}
+                label="Portrait"
+              />
+              <FormControlLabel
+                value="Landscape"
+                control={<Radio />}
+                label="Landscape"
+              />
+              <FormControlLabel
+                value="Still life"
+                control={<Radio />}
+                label="Still life"
+              />
+              <FormControlLabel
+                value="Other"
+                control={<Radio />}
+                label="Other"
+              />
+            </RadioGroup>
+          </FormControl>
+        </Box>
       </Paper>
     </Grid>
   );
