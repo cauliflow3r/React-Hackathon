@@ -5,8 +5,10 @@ import { Box, Menu, MenuItem, MenuList } from "@mui/material";
 import siteName from "../svg/siteName.png";
 import { Link, useNavigate } from "react-router-dom";
 import newlogo from "../svg/Screenshot 2023-05-16 at 14.13.41.png";
+
 import { useAuth } from "../../contexts/AuthContextProvider";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 import SearchProducts from "../search/SeachProducts";
 
 const AxyenniyNavbar = () => {
