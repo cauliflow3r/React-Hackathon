@@ -14,7 +14,7 @@ const INIT_STATE = {
     products: [],
     productDetails: {},
     commentsState: {comment: "", user: "user"},
-    consts: {}
+    consts: {"maxPrice": 200}
   };
   
   // функция , которая в зависимости от action.type, меняет определенную часть состояния
@@ -40,7 +40,6 @@ function ProductContextProvider({children}){
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const navigate = useNavigate();
   // max price
- const [maxPrice, setMaxPrice] = useState(10);
 
 
   //! const navigate = useNavigate();
@@ -157,11 +156,23 @@ function ProductContextProvider({children}){
 // ! likes finish
 
 // ! maxPrice
-// async function getMaxPrice() {
-//   const { data } = await axios(
-//     `${JSON_API_CONSTS}`
-//   );
-// }
+async function getMaxPrice() {
+  const { data } = await axios(
+    `${JSON_API_CONSTS}`
+  );
+  dispatch({ type: "ADD_CONSTS", payload: data })
+}
+
+async function changeMaxPrice(newPrice) {
+  const newObj = {...state.consts, maxPrice: newPrice}
+  console.log("newObj",newObj);
+  await axios.patch(`${JSON_API_CONSTS}`, newObj);
+    getMaxPrice();
+
+}
+
+// changeMaxPrice(155);
+
 // ! maxPrice finish
 
 
@@ -170,8 +181,8 @@ function ProductContextProvider({children}){
 
     const values ={addProduct,     products: state.products,
     productDetails: state.productDetails,
-    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState, setMaxPrice, maxPrice, setLike, 
-    setDisLike
+    getProducts, deleteProduct, saveEditedProduct, getProductDetails, fetchByParams, commentsState: state.commentsState, setComments, setCommentsState, setLike, 
+    setDisLike, constsState: state.consts, changeMaxPrice, getMaxPrice
 
     }
     return <productContext.Provider value={values}>{children}</productContext.Provider>

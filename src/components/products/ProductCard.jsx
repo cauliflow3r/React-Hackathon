@@ -15,6 +15,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import { ADMIN } from "../../helpers/consts";
 import { useAuth } from "../../contexts/AuthContextProvider";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function ProductCard({ item }) {
   const { deleteProduct, setLike, setDisLike } = useProducts();
@@ -22,8 +23,8 @@ export default function ProductCard({ item }) {
   const {
     user: { email },
   } = useAuth();
-  console.log(email);
-  console.log(ADMIN);
+  // console.log(email);
+  // console.log(ADMIN);
   const navigate = useNavigate();
 
   return (
@@ -109,6 +110,9 @@ export default function ProductCard({ item }) {
             color={checkProductInCart(item.id) ? "primary" : undefined}
           />
         </IconButton>
+        {/* <IconButton>
+          <FavoriteIcon style={{ color: "gray" }} />
+        </IconButton> */}
       </CardActions>
     </Card>
   );
