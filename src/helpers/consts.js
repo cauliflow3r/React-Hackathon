@@ -15,3 +15,6 @@ export const ADMIN = "slavamederu@gmail.com";
 
 export const maxPrice = 10;
 
+export const FAVORITE = {
+  GET_FAVORITE: "GET_FAVORITE"
+}

@@ -6,11 +6,12 @@ import { useProducts } from "../../contexts/ProductContextProvider";
 import ProductCard from "./ProductCard";
 
 const ProductList = () => {
-  const { products, getProducts } = useProducts();
+  const { products, getProducts, getMaxPrice } = useProducts();
   //   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     getProducts();
+    getMaxPrice();
   }, []);
 
   //   useEffect(() => {

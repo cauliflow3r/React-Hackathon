@@ -11,11 +11,18 @@ import { useCart } from "../../contexts/CartContextProvider";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
+import { useAuth } from "../../contexts/AuthContextProvider";
 
 export default function Cart() {
   const { getCart, cart, changeProductCount, deleteCartProduct } = useCart();
 
   const navigate = useNavigate();
+
+  const {
+    user: { email },
+  } = useAuth();
+
+  console.log(email);
 
   React.useEffect(() => {
     getCart();
@@ -101,7 +108,7 @@ export default function Cart() {
         </Table>
         <Button onClick={cartCleaner}> BUY NOW FOR {cart?.totalPrice} $</Button>
       </TableContainer>
-      <div id="paymentRight">
+      <div id="paymentRight" style={{ margin: "0 auto" }}>
         <div id="visaInfo">
           <div id="infoLeft">
             <h3>Card Number</h3>
@@ -121,7 +128,13 @@ export default function Cart() {
           <h2>Total</h2>
           <h3>{cart?.totalPrice} $</h3>
         </div>
-        <button onClick={() => navigate("/")} id="buyBtn">
+        <button
+          onClick={() => {
+            navigate("/");
+            alert(`Вы обеднели на ${cart?.totalPrice} $`);
+          }}
+          id="buyBtn"
+        >
           BUY
         </button>
       </div>

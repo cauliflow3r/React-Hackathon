@@ -41,7 +41,11 @@ export default function CanvasForm({
     setOpen(false);
   };
 
-  const { maxPrice, setMaxPrice } = useProducts();
+  const {
+    constsState: { maxPrice },
+    constsState,
+    changeMaxPrice,
+  } = useProducts();
 
   return (
     <div>
@@ -113,12 +117,15 @@ export default function CanvasForm({
           <Button
             onClick={(e) => {
               handleSubmit(e);
-              navigate("/products");
-              if (price > maxPrice) {
-                setMaxPrice(price);
-              }
+
               console.log("price", price);
               console.log("maxPrice", maxPrice);
+              console.log(+price > +maxPrice);
+
+              if (price > maxPrice) {
+                changeMaxPrice(price);
+              }
+              navigate("/products");
             }}
           >
             Submit
